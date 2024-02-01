@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.Rizkika'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+/*dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}*/
+dependencies { // sebuah libary yang bukan default yang di jalankan suatu fungsi
+    implementation 'com.google.guava:guava:29.0-jre'
+    testImplementation 'junit:junit:4.13'
+}
+
+
+test {
+    useJUnitPlatform()
+}
+task greetingTask() { // subuah task yang di jalankan akan mengisi data yang sesuai di terminal
+    doLast {
+        String nama = project.hasProperty('nama') ? project.property('nama') : 'Gradle User'
+        println "Hello, $nama! Welcome to Gradle World!"
+    }
+}
